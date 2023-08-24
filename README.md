@@ -187,7 +187,7 @@ offboardWaiter();
 #### Email Verification
 
 ```javascript
-const handleEmailVerification = async () => {
+const emailVerification = async () => {
   const response = await nexaflowApi.emailVerification({
     id: "ID",
     email: "EMAIL",
@@ -196,7 +196,7 @@ const handleEmailVerification = async () => {
   console.log(response);
 };
 
-handleEmailVerification();
+emailVerification();
 ```
 
 ## Acknowledgements
