@@ -68,7 +68,7 @@ const getPageByID = async () => {
   const page=await nexaflowApi.getPageByID({
       pageId: "PAGE_ID",
       websiteId: "WEBSITE_ID",
-    }
+    })
   console.log(page)
 };
 
