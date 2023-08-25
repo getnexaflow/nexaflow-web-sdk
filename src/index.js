@@ -13,18 +13,18 @@ import { getWaiterFn, waiterOffboardFn } from "./service/waitlist.js";
 class NexaflowInit {
   constructor(apiKey) {
     if (!apiKey) {
-      throw new Error("API key is required for initialization.");
+      throw new Error("API key is required for initialization");
     }
     this.apiKey = apiKey;
   }
 
   async getPageByID(obj) {
     if (!obj?.pageId?.trim()) {
-      throw new Error("pageId is required.");
+      throw new Error("pageId is required");
     }
 
     if (!obj?.websiteId?.trim()) {
-      throw new Error("websiteId is required.");
+      throw new Error("websiteId is required");
     }
 
     const { error, response, message } = await fetchPagesByIDFn({
@@ -55,7 +55,7 @@ class NexaflowInit {
 
   async getWebsiteByID(obj) {
     if (!obj?.websiteId?.trim()) {
-      throw new Error("websiteId is required.");
+      throw new Error("websiteId is required");
     }
 
     const { error, response, message } = await fetchWebsiteByIdFn({
@@ -77,11 +77,11 @@ class NexaflowInit {
 
   async formSubmission(obj) {
     if (!obj?.formId?.trim()) {
-      throw new Error("formId is required.");
+      throw new Error("formId is required");
     }
 
     if (!obj?.data) {
-      throw new Error("data is required.");
+      throw new Error("data is required");
     }
     const { error, response, message } = await formSubmit({
       apiKey: this.apiKey,
@@ -97,7 +97,7 @@ class NexaflowInit {
 
   async getGoogleSheetData(obj) {
     if (!obj?.googleSheetId) {
-      throw new Error("googleSheetId is required.");
+      throw new Error("googleSheetId is required");
     }
 
     const { error, response, message } = await getGoogleSheetsDataFn({
@@ -114,11 +114,11 @@ class NexaflowInit {
 
   async postGoogleSheetData(obj) {
     if (!obj?.googleSheetId) {
-      throw new Error("googleSheetId is required.");
+      throw new Error("googleSheetId is required");
     }
 
     if (!obj?.data) {
-      throw new Error("data is required.");
+      throw new Error("data is required");
     }
 
     const { error, response, message } = await postGoogleSheetsDataFn({
@@ -135,15 +135,15 @@ class NexaflowInit {
 
   async cors(obj) {
     if (!obj?.id) {
-      throw new Error("id is required.");
+      throw new Error("id is required");
     }
 
     if (!obj?.data) {
-      throw new Error("data is required.");
+      throw new Error("data is required");
     }
 
     if (!obj?.data?.method) {
-      throw new Error("method is required.");
+      throw new Error("method is required");
     }
 
     const { error, response, message } = await corsFn({
@@ -160,11 +160,11 @@ class NexaflowInit {
 
   async emailVerification(obj) {
     if (!obj?.id) {
-      throw new Error("id is required.");
+      throw new Error("id is required");
     }
 
     if (!obj?.email) {
-      throw new Error("email is required.");
+      throw new Error("email is required");
     }
 
     const { error, response, message } = await emailVerificationFn({
@@ -181,11 +181,11 @@ class NexaflowInit {
 
   async getWaiter(obj) {
     if (!obj?.id) {
-      throw new Error("id is required.");
+      throw new Error("id is required");
     }
 
     if (!obj?.waitlistId) {
-      throw new Error("waitlistId is required.");
+      throw new Error("waitlistId is required");
     }
 
     const { error, response, message } = await getWaiterFn({
@@ -202,15 +202,15 @@ class NexaflowInit {
 
   async offboardWaiter(obj) {
     if (!obj?.id) {
-      throw new Error("id is required.");
+      throw new Error("id is required");
     }
 
     if (!obj?.waitlist_id) {
-      throw new Error("waitlist_id is required.");
+      throw new Error("waitlist_id is required");
     }
 
     if (!obj?.waiters) {
-      throw new Error("waiters is required.");
+      throw new Error("waiters is required");
     }
 
     const { error, response, message } = await waiterOffboardFn({
