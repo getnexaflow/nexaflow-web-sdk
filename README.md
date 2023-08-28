@@ -25,7 +25,7 @@ A npm package for content management system in web application using [NexaFlow](
 ```javascript
 import NexaflowInit from "nexaflow-web-sdk";
 
-const apiKey = "api key";
+const apiKey = "apikey";
 
 const nexaflowApi = new NexaflowInit(apiKey);
 ```
