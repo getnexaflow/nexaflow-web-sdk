@@ -9,6 +9,7 @@ import {
 import { corsFn } from "./service/cors.js";
 import { emailVerificationFn } from "./service/emailVerification.js";
 import { getWaiterFn, waiterOffboardFn } from "./service/waitlist.js";
+import { authenticateFn } from "./service/authentication.js";
 
 class NexaflowInit {
   constructor(apiKey) {
@@ -215,6 +216,88 @@ class NexaflowInit {
 
     const { error, response, message } = await waiterOffboardFn({
       apiKey: this.apiKey,
+      ...obj,
+    });
+
+    if (error) {
+      throw new Error(message);
+    }
+
+    return await response;
+  }
+
+  async sendOtp(obj) {
+    if (!obj?.id) {
+      throw new Error("id is required");
+    }
+
+    if (!obj?.data) {
+      throw new Error("data is required");
+    }
+
+    const { error, response, message } = await authenticateFn({
+      apiKey: this.apiKey,
+      type: "otp",
+      ...obj,
+    });
+
+    if (error) {
+      throw new Error(message);
+    }
+
+    return await response;
+  }
+
+  async signup(obj) {
+    if (!obj?.id) {
+      throw new Error("id is required");
+    }
+
+    if (!obj?.data) {
+      throw new Error("data is required");
+    }
+
+    if (!obj?.data?.email) {
+      throw new Error("email is required");
+    }
+
+    if (!obj?.data?.otp) {
+      throw new Error("otp is required");
+    }
+
+    const { error, response, message } = await authenticateFn({
+      apiKey: this.apiKey,
+      type: "register",
+      ...obj,
+    });
+
+    if (error) {
+      throw new Error(message);
+    }
+
+    return await response;
+  }
+
+  async signin(obj) {
+    if (!obj?.id) {
+      throw new Error("id is required");
+    }
+
+    if (!obj?.data) {
+      throw new Error("data is required");
+    }
+
+    if (!obj?.data?.email) {
+      throw new Error("email is required");
+    }
+
+    if (!obj?.data?.otp) {
+      throw new Error("otp is required");
+    }
+
+    const { error, response, message } = await authenticateFn({
+      apiKey: this.apiKey,
+      type: "login",
       ...obj,
     });
 
