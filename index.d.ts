@@ -1,5 +1,12 @@
+type AuthObject = {
+  otp: string;
+  email: string;
+} & {
+  [key: string]: any;
+};
+
 declare module "nexaflow-web-sdk" {
-  export class NexaflowInit {
+  class NexaflowInit {
     constructor(apiKey: string);
 
     getPageByID(obj: { pageId: string; websiteId: string }): Promise<any>;
@@ -8,13 +15,18 @@ declare module "nexaflow-web-sdk" {
 
     getWebsiteByID(obj: { websiteId: string }): Promise<any>;
 
-    formSubmission(obj: { formId: string; data: any }): Promise<any>;
+    formSubmission(obj: {
+      formId: string;
+      data: {
+        [key: string]: string;
+      };
+    }): Promise<any>;
 
     getGoogleSheetData(obj: { googleSheetId: string }): Promise<any>;
 
     postGoogleSheetData(obj: {
       googleSheetId: string;
-      data: any;
+      data: Array<Array<string>>;
     }): Promise<any>;
 
     cors(obj: {
@@ -22,7 +34,9 @@ declare module "nexaflow-web-sdk" {
       data: {
         method: string;
         data?: any;
-        headers?: any;
+        headers?: {
+          [key: string]: any;
+        };
       };
     }): Promise<any>;
 
@@ -43,9 +57,13 @@ declare module "nexaflow-web-sdk" {
       waitlist_id: string;
       waiters: { uuid: string }[];
     }): Promise<any>;
-  }
 
-  const NexaflowInit: NexaflowInit;
+    sendOtp(obj: { id: string; data: AuthObject }): Promise<any>;
+
+    signup(obj: { id: string; data: AuthObject }): Promise<any>;
+
+    signin(obj: { id: string; data: AuthObject }): Promise<any>;
+  }
 
   export default NexaflowInit;
 }

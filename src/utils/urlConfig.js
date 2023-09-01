@@ -18,6 +18,8 @@ const urlConfig = {
   emailVerification: ({ id }) => `${url}/api/email-verify/${id}`,
 
   waitlist: ({ id }) => `${url}/api/waitlist/${id}`,
+
+  authentication: ({ id, type }) => `${url}/api/auth/${id}?type=${type}`,
 };
 
 export default urlConfig;

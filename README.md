@@ -19,13 +19,14 @@ A npm package for content management system in web application using [NexaFlow](
 - [CORS](#CORS)
 - [Waitlist](#Waitlist)
 - [Email Verification](#EmailVerification)
+- [Authentication](#Authentication)
 
 ## Initiation
 
 ```javascript
 import NexaflowInit from "nexaflow-web-sdk";
 
-const apiKey = "api key";
+const apiKey = "apikey";
 
 const nexaflowApi = new NexaflowInit(apiKey);
 ```
@@ -197,6 +198,53 @@ const emailVerification = async () => {
 };
 
 emailVerification();
+```
+
+<div id="Authentication"></div>
+
+#### Authentication
+
+```javascript
+const sendOtp = async () => {
+  const response = await nexaflowApi.sendOtp({
+    id: "ID",
+    data: {
+      email: "EMAIL", //required field
+      // other fields
+    },
+  });
+  console.log(response);
+};
+
+sendOtp();
+
+const signup = async () => {
+  const response = await nexaflowApi.signup({
+    id: "ID",
+    data: {
+      email: "EMAIL", //required field
+      otp: "OTP",
+      // other fields
+    },
+  });
+  console.log(response);
+};
+
+signup();
+
+const signin = async () => {
+  const response = await nexaflowApi.signin({
+    id: "ID",
+    data: {
+      email: "EMAIL", //required field
+      otp: "OTP",
+      // other fields
+    },
+  });
+  console.log(response);
+};
+
+signin();
 ```
 
 ## Acknowledgements
