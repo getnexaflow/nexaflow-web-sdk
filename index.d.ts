@@ -5,6 +5,10 @@ type AuthObject = {
   [key: string]: any;
 };
 
+type OtpObject = { email: string } & {
+  [key: string]: any;
+};
+
 declare module "nexaflow-web-sdk" {
   class NexaflowInit {
     constructor(apiKey: string);
@@ -58,7 +62,7 @@ declare module "nexaflow-web-sdk" {
       waiters: { uuid: string }[];
     }): Promise<any>;
 
-    sendOtp(obj: { id: string; data: AuthObject }): Promise<any>;
+    sendOtp(obj: { id: string; data: OtpObject }): Promise<any>;
 
     signup(obj: { id: string; data: AuthObject }): Promise<any>;
 
