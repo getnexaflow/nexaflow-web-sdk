@@ -11,12 +11,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
+
         with:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm publish
+
+      - name: NPM Publish
+        run: npm publish
