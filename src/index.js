@@ -9,7 +9,12 @@ import {
 import { corsFn } from "./service/cors.js";
 import { emailVerificationFn } from "./service/emailVerification.js";
 import { getWaiterFn, waiterOffboardFn } from "./service/waitlist.js";
-import { authenticateFn } from "./service/authentication.js";
+import {
+  getAuthenticatedUserFn,
+  authenticateFn,
+  updateAuthenticatedUserFn,
+  deleteAuthenticatedUserFn,
+} from "./service/authentication.js";
 
 class NexaflowInit {
   constructor(apiKey) {
@@ -299,6 +304,73 @@ class NexaflowInit {
       apiKey: this.apiKey,
       type: "login",
       ...obj,
+    });
+
+    if (error) {
+      throw new Error(message);
+    }
+
+    return await response;
+  }
+
+  async getUserDetails(obj) {
+    if (!obj?.id) {
+      throw new Error("id is required");
+    }
+
+    if (!obj?.Authorization) {
+      throw new Error("Authorization is required");
+    }
+
+    const { error, response, message } = await getAuthenticatedUserFn({
+      ...obj,
+      apiKey: this.apiKey,
+    });
+
+    if (error) {
+      throw new Error(message);
+    }
+
+    return await response;
+  }
+
+  async updateUserDetails(obj) {
+    if (!obj?.id) {
+      throw new Error("id is required");
+    }
+
+    if (!obj?.Authorization) {
+      throw new Error("Authorization is required");
+    }
+
+    if (!obj?.data) {
+      throw new Error("data is required");
+    }
+
+    const { error, response, message } = await updateAuthenticatedUserFn({
+      ...obj,
+      apiKey: this.apiKey,
+    });
+
+    if (error) {
+      throw new Error(message);
+    }
+
+    return await response;
+  }
+
+  async deleteUserDetails(obj) {
+    if (!obj?.id) {
+      throw new Error("id is required");
+    }
+
+    if (!obj?.Authorization) {
+      throw new Error("Authorization is required");
+    }
+
+    const { error, response, message } = await deleteAuthenticatedUserFn({
+      ...obj,
+      apiKey: this.apiKey,
     });
 
     if (error) {

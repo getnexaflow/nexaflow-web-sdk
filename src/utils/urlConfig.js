@@ -20,6 +20,8 @@ const urlConfig = {
   waitlist: ({ id }) => `${url}/api/waitlist/${id}`,
 
   authentication: ({ id, type }) => `${url}/api/auth/${id}?type=${type}`,
+
+  authenticationUser: ({ id }) => `${url}/api/auth/${id}/user`,
 };
 
 export default urlConfig;

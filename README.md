@@ -222,7 +222,7 @@ const signup = async () => {
   const response = await nexaflowApi.signup({
     id: "ID",
     data: {
-      email: "EMAIL", //required field
+      email: "EMAIL",
       otp: "OTP",
       // other fields
     },
@@ -236,15 +236,47 @@ const signin = async () => {
   const response = await nexaflowApi.signin({
     id: "ID",
     data: {
-      email: "EMAIL", //required field
+      email: "EMAIL",
       otp: "OTP",
-      // other fields
     },
   });
   console.log(response);
 };
 
 signin();
+
+const getUser = async () => {
+  const response = await nexaflowApi.getUserDetails({
+    id: "ID",
+    Authorization: "AUTHORIZATION",
+  });
+  console.log(response);
+};
+
+getUserList();
+
+const updateUser = async () => {
+  const response = await nexaflowApi.updateUserDetails({
+    id: "ID",
+    Authorization: "AUTHORIZATION",
+    data: {
+      // other fields
+    },
+  });
+  console.log(response);
+};
+
+updateUser();
+
+const deleteUser = async () => {
+  const response = await nexaflowApi.deleteUserDetails({
+    id: "ID",
+    Authorization: "AUTHORIZATION",
+  });
+  console.log(response);
+};
+
+deleteUser();
 ```
 
 ## Acknowledgements
