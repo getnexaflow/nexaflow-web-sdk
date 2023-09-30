@@ -67,6 +67,18 @@ declare module "nexaflow-web-sdk" {
     signup(obj: { id: string; data: AuthObject }): Promise<any>;
 
     signin(obj: { id: string; data: AuthObject }): Promise<any>;
+
+    getUserDetails(obj: { id: string; Authorization: string }): Promise<any>;
+
+    updateUserDetails(obj: {
+      id: string;
+      Authorization: string;
+      data: {
+        [key: string]: string;
+      };
+    }): Promise<any>;
+
+    deleteUserDetails(obj: { id: string; Authorization: string }): Promise<any>;
   }
 
   export default NexaflowInit;

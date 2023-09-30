@@ -1,5 +1,4 @@
 const parseResponse = (responseJSON) => {
-  // console.log(responseJSON.blocks);
   try {
     let result = {};
     responseJSON.blocks.map((block) => {
@@ -56,7 +55,6 @@ const parseResponse = (responseJSON) => {
     });
     return { error: false, response: result, message: null };
   } catch (error) {
-    console.log(error);
     return { error: true, response: null, message: error };
   }
 };
